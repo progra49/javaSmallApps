@@ -25,11 +25,11 @@ public class RemoveDuplicates {
         al.add("java");
         al.add(12);
 
-        System.out.println("Before removing duplicates");
+        System.out.println("Before removing duplicates. Size: " + al.size());
         al.stream().forEach(System.out::println);
 
         for (int i = 0; i < al.size(); i++) {
-            for (int j = i +i; j < al.size(); j++) {
+            for (int j = i +1; j < al.size(); j++) {
                 if(al.get(i).equals(al.get(j))) {
                     al.remove(j);
                     j--;
@@ -37,7 +37,7 @@ public class RemoveDuplicates {
             }
         }
 
-        System.out.println("After removing duplicates");
+        System.out.println("After removing duplicates. Size: " + al.size());
         al.stream().forEach(System.out::println);
 
     }
