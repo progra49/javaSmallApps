@@ -1,8 +1,6 @@
 package october.day3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -11,12 +9,11 @@ import java.util.stream.Collectors;
 public class RemoveDuplicates {
 
     //Write a Java program to remove duplicate elements from an arraylist
-    // without using collections (without using set)
-
     public static void main(String[] args) {
 
         ArrayList<String> al = createArray();
 
+        // without using collections (without using set)
         System.out.print("Before removing duplicates. Size: " + al.size()  + " ");
         al.stream().forEach(s -> System.out.print(s + " "));
         System.out.println();
@@ -34,10 +31,27 @@ public class RemoveDuplicates {
         al.stream().forEach(s -> System.out.print(s + " "));
         System.out.println();
 
+
+        // by using stream distinct() function
         al = createArray();
         List<String> listWithoutDuplicates = al.stream().distinct().collect(Collectors.toList());
         System.out.print("After removing duplicates. Size: " + listWithoutDuplicates.size() + " ");
         listWithoutDuplicates.stream().forEach(s -> System.out.print(s + " "));
+        System.out.println();
+
+        // by using hash set from Collection api
+        al = createArray();
+        listWithoutDuplicates = new ArrayList<>(new HashSet<>(al));
+        System.out.print("After removing duplicates. Size: " + listWithoutDuplicates.size() + " ");
+        listWithoutDuplicates.stream().forEach(s -> System.out.print(s + " "));
+        System.out.println();
+
+        // by using linked hash set set from Collection api, by using LinkedHashSet we can preserve order of original list
+        al = createArray();
+        listWithoutDuplicates = new ArrayList<>(new LinkedHashSet<>(al));
+        System.out.print("After removing duplicates. Size: " + listWithoutDuplicates.size() + " ");
+        listWithoutDuplicates.stream().forEach(s -> System.out.print(s + " "));
+        System.out.println();
 
     }
 
